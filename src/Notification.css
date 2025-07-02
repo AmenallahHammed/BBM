@@ -1,0 +1,194 @@
+
+
+.notification-list {
+  max-width: 700px;
+  margin: 110px auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  padding: 0 1.5rem 2.5rem 1.5rem;
+}
+.notification-list h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 1.2rem;
+  text-align: center;
+}
+.notification-empty {
+  color: #888;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+/* Notification Card Modern Design */
+.notification-card {
+  width: 100%;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px 0 rgba(44,62,80,0.10);
+  display: flex;
+  align-items: flex-start;
+  gap: 1.3rem;
+  padding: 1.5rem 2rem 1.5rem 1.5rem;
+  position: relative;
+  opacity: 0;
+  animation: fadeIn 0.7s forwards;
+  transition: box-shadow 0.3s, transform 0.3s;
+  cursor: pointer;
+  border: none;
+}
+.notification-card:hover {
+  box-shadow: 0 8px 32px 0 rgba(44,62,80,0.16);
+  transform: translateY(-2px) scale(1.01);
+}
+.notification-card.unread::after {
+  content: '';
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  width: 10px;
+  height: 10px;
+  background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px #fff;
+}
+.notification-card.refuse {
+  border-left: 7px solid #EF4444;
+  background: linear-gradient(90deg, #fff6f6 80%, #fff 100%);
+}
+.notification-card.modification {
+  border-left: 7px solid #3B82F6;
+  background: linear-gradient(90deg, #f4f8fd 80%, #fff 100%);
+}
+.notification-icon {
+  font-size: 2.1rem;
+  margin-top: 2px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.notification-card.refuse .notification-icon {
+  color: #EF4444;
+  background: linear-gradient(135deg, #EF4444 60%, #F97316 100%);
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.notification-card.modification .notification-icon {
+  color: #3B82F6;
+  background: linear-gradient(135deg, #3B82F6 60%, #8B5CF6 100%);
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.notification-content {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.notification-header {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 0.2rem;
+}
+.notification-type-badge {
+  display: inline-block;
+  font-size: 0.98rem;
+  font-weight: 600;
+  padding: 3px 16px;
+  border-radius: 12px;
+  margin-right: 0.5rem;
+  letter-spacing: 0.01em;
+  vertical-align: middle;
+}
+.notification-type-badge.refuse {
+  background: linear-gradient(90deg, #EF4444 60%, #F97316 100%);
+  color: #fff;
+}
+.notification-type-badge.modification {
+  background: linear-gradient(90deg, #3B82F6 60%, #8B5CF6 100%);
+  color: #fff;
+}
+.notification-time {
+  font-size: 0.93rem;
+  color: #888;
+  margin-left: auto;
+  font-weight: 500;
+}
+.notification-title {
+  font-size: 1.13rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 0.1rem;
+}
+.notification-meta {
+  font-size: 0.98rem;
+  color: #3B4252;
+  margin-bottom: 0.2rem;
+}
+.notification-message {
+  font-size: 1.01rem;
+  color: #34495e;
+  margin-bottom: 0.3rem;
+}
+.notification-actions {
+  display: flex;
+  gap: 0.7rem;
+  margin-top: 0.5rem;
+}
+.notification-btn {
+  background: linear-gradient(90deg, #3B82F6 60%, #8B5CF6 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 7px 18px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(44,62,80,0.07);
+  transition: background 0.3s, transform 0.2s;
+}
+.notification-btn.refuse {
+  background: linear-gradient(90deg, #EF4444 60%, #F97316 100%);
+}
+.notification-btn:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px) scale(1.03);
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (max-width: 700px) {
+  .notification-list {
+    max-width: 99vw;
+    padding: 1rem 0.3rem 2rem 0.3rem;
+  }
+  .notification-card {
+    padding: 1rem 0.7rem 1rem 0.7rem;
+  }
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (max-width: 600px) {
+  .notification-list {
+    max-width: 98vw;
+    padding: 1rem 0.3rem 2rem 0.3rem;
+  }
+  .notification-card {
+    padding: 1rem 0.7rem 1rem 0.7rem;
+  }
+}
