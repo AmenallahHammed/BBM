@@ -3,7 +3,7 @@ import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import FacturesPage from './FacturesPage';
 import Notification from './Notification';
-// import GardiennageInterface from './GardiennageInterface'; // File does not exist
+import GardiennageInterface from './GardiennageInterface';
 import LivraisonInterface from './LivraisonInterface';
 import ClientForm from './ClientForm';
 import NavBar from './NavBar';
@@ -25,18 +25,25 @@ const Dashboard = ({ user, onLogout }) => {
           </button>
         </header>
         <Routes>
-          <Route path="/" element={<ClientForm />} />
+          {/* Facturation: default to /factures, others to their own dashboard */}
           {user.role === 'facturation' && (
             <>
+              <Route path="/" element={<ClientForm />} />
               <Route path="/factures" element={<FacturesPage />} />
               <Route path="/notification" element={<Notification />} />
             </>
           )}
           {user.role === 'livraison' && (
-            <Route path="/livraison" element={<LivraisonInterface />} />
+            <>
+              <Route path="/" element={<Navigate to="/livraison" replace />} />
+              <Route path="/livraison" element={<LivraisonInterface />} />
+            </>
           )}
           {user.role === 'gardiennage' && (
-            <Route path="/gardiennage" element={<div>GardiennageInterface non disponible</div>} />
+            <>
+              <Route path="/" element={<Navigate to="/gardiennage" replace />} />
+              <Route path="/gardiennage" element={<GardiennageInterface />} />
+            </>
           )}
           {/* Redirect unknown routes to home */}
           <Route path="*" element={<Navigate to="/" replace />} />
